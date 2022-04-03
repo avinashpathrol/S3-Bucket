@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>node s3 app</title>
+    </head>
+    <body>
+        Hello! this is node s3 app
+        <div>
+            <input type="file" id="s3-file" onchange="saveFile(this)"/>
+
+        </div>
+
+        <script>
+            function saveFile(event) {
+                const xhr = new XMLHttpRequest();
+                const formData = new FormData();
+                const file = event.files[0];
+                formData.append('s3-file', file);
+
+                xhr.onreadystatechange = (state) => {
+                    console.log(xhr.status);
+                }
+
+                xhr.timeout = 5000;
+                xhr.open('POST', '/upload-to-s3');
+                xhr.send(formData);
+            }
+        </script>
+    </body>
+</html>

@@ -1,2 +1,2 @@
-# AWS-S3-NodeJS
-AWS-S3 operations using NodeJS
+# node-s3
+ S3 operations using Node-JS
