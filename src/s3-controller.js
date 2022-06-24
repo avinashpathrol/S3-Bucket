@@ -4,7 +4,7 @@ const {uploadFileToS3, getBucketListFromS3, getPresignedURL} = require('./s3-ser
 async function s3Upload (req, res) {
     const formData = await readFormData(req);
     try{
-        await uploadFileToS3(formData.file, 'gravity-time-test-bucket-3');
+        await uploadFileToS3(formData.file, 'prodsiteuseruploads');
         res.send('Uploaded!!');
     } catch(ex) {
         res.send('ERROR!!!!');
@@ -13,7 +13,7 @@ async function s3Upload (req, res) {
 
 async function s3Get (req, res) {
     try{
-        const bucketData = await getBucketListFromS3('gravity-time-test-bucket-3');
+        const bucketData = await getBucketListFromS3('prodsiteuseruploads');
         const {Contents = []} = bucketData; 
         res.send(Contents.map(content => {
         return {
@@ -47,7 +47,7 @@ async function readFormData(req) {
 async function getSignedUrl(req, res) {
     try {
         const {key} = req.params;
-        const url = await getPresignedURL('gravity-time-test-bucket-3', key);
+        const url = await getPresignedURL('prodsiteuseruploads', key);
         res.send(url);
 
     } catch(ex) {

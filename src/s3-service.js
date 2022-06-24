@@ -19,7 +19,7 @@ async function uploadFileToS3(fileObj, bucketName) {
     const params = {
         Body: fileStream,
         Bucket: bucketName,
-        Key: fileObj.originalFilename
+        Key: "AVINASH"
     }
     const uploadData = await s3.upload(params).promise();
     return uploadData;
